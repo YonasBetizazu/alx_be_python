@@ -1,6 +1,6 @@
 size_of_pattern = int(input("Enter the size of the pattern:"))
-while size_of_pattern>0:
-    print("*")
-    size_of_pattern-=1
+for x in range(size_of_pattern):
+    for i in range(size_of_pattern+1):
+        print("*",end="")
+    print()    
     
-
