@@ -1,13 +1,13 @@
 first_number = int(input("Enter the first number: "))
 secound_number = int(input("Enter the second number: "))
-type_of_operation = input("Choose the operation (+, -, *, /):")
-if type_of_operation=="+":
+operation  = input("Choose the operation (+, -, *, /):")
+if operation ="+":
     print(f"The result is {first_number+secound_number}.")
-elif type_of_operation=="-":
+elif operation =="-":
     print(f"The result is {first_number-secound_number}.")
-elif type_of_operation=="*":
+elif operation =="*":
     print(f"The result is {first_number*secound_number}.")
-elif type_of_operation=="/":
+elif operation =="/":
     if secound_number==int(0):
         print("Cannot divide by zero.")
     else:
