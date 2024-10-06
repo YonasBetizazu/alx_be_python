@@ -16,7 +16,7 @@ class BankAccount:
             self.__account_balance -= amount  # Update the balance
             return True  # Withdrawal successful
         elif amount > self.__account_balance:
-            print("You don't have sufficient funds.")
+            print("Insufficient funds.")
             return False  # Withdrawal failed
         else:
             print("Something went wrong!")  
