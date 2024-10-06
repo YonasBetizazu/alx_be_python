@@ -1,37 +1,27 @@
-import sys
-from bank_account import BankAccount
+class BankAccount:
+    def __init__(self, account_balance=0):
+        self.__account_balance = account_balance  # Private attribute for account balance
 
-def main():
-    account = BankAccount(100)  # Example starting balance
-
-    if len(sys.argv) < 2:
-        print("Usage: python main.py <command>:<amount>")
-        print("Commands: deposit, withdraw, display")
-        sys.exit(1)
-
-    command, *params = sys.argv[1].split(':')
-    amount = None
-
-    # Attempt to convert the amount to a float if provided
-    if params:
-        try:
-            amount = float(params[0])
-        except ValueError:
-            print("Invalid amount. Please enter a numeric value.")
-            sys.exit(1)
-
-    if command == "deposit" and amount is not None:
-        account.deposit(amount)
-        print(f"Deposited: ${amount:.2f}")
-    elif command == "withdraw" and amount is not None:
-        if account.withdraw(amount):
-            print(f"Withdrew: ${amount:.2f}")
+    def deposit(self, amount):
+        """Add the specified amount to the account balance."""
+        if amount > 0:
+            self.__account_balance += amount  # Update the balance
+            print(f"Deposited: ${amount:.2f}. New balance: ${self.__account_balance:.2f}")  
         else:
-            print("Insufficient funds.")
-    elif command == "display":
-        account.display_balance()
-    else:
-        print("Invalid command. Please use deposit, withdraw, or display.")
+            print("Please enter a valid amount.")
 
-if __name__ == "__main__":
-    main()
+    def withdraw(self, amount):
+        """Deduct the specified amount from the account balance if sufficient funds are available."""
+        if 0 < amount <= self.__account_balance:  
+            self.__account_balance -= amount  # Update the balance
+            return True  # Withdrawal successful
+        elif amount > self.__account_balance:
+            print("You don't have sufficient funds.")
+            return False  # Withdrawal failed
+        else:
+            print("Something went wrong!")  
+            return False  # Withdrawal failed
+
+    def display_balance(self):
+        """Print the current account balance."""
+        print(f"Your balance is ${self.__account_balance:.2f}")  
