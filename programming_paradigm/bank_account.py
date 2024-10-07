@@ -6,7 +6,7 @@ class BankAccount:
         """Add the specified amount to the account balance."""
         if amount > 0:
             self.__account_balance += amount  # Update the balance
-            print(f"Deposited: ${amount:.1f}")  # Print the deposit message
+            return f"Deposited: ${amount:.1f}"  # Print the deposit message
         else:
             print("Please enter a valid amount.")
 
